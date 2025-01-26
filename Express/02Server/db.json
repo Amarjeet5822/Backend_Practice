@@ -1,0 +1,41 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Aman",
+      "city": "Pune"
+    },
+    {
+      "id": 2,
+      "name": "Chunnu",
+      "city": "Delhi"
+    },
+    {
+      "id": 3,
+      "name": "Satyam",
+      "city": "Gaya"
+    },
+    {
+      "id": 4,
+      "name": "Arpit",
+      "city": "Kausambi"
+    },
+    {
+      "id": 5,
+      "name": "Rajat",
+      "city": "Greater Noida"
+    },
+    {
+      "id": 6,
+      "name": "Kishan",
+      "city": "Jalore"
+    }
+  ],
+  "teachers": [
+    {
+      "id": 1,
+      "name": "Bruce",
+      "city": "Bangalore"
+    }
+  ]
+}

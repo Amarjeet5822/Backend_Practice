@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>upload <img src="" alt=""></title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #box {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <form id="uploadForm" enctype="multipart/form-data">
+    <label for="file">Upload file :</label>
+    <div>
+      <input type="file" name="file" id="file" required accept="*">
+    </div>
+    <div>
+      <button>upload</button>
+    </div>
+  </form>
+  <div id="container">
+    
+  </div>
+</body>
+  <script>
+    const container = document.getElementById("container");
+    const form = document.getElementById("uploadForm");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const fileInput = document.getElementById("file");
+      const formData = new FormData();
+      formData.append("file", fileInput.files[0]);
+      try{
+        const resposne = await fetch("/upload", {
+          method: "POST",
+          body: formData
+        })
+        if(resposne.ok){
+          const data = await resposne.json();
+          const img = document.createElement("img");
+          img.src = data.imageUrl;
+          img.alt = "uploaded Image";
+          img.style.width = "200px";
+          img.style.height ="300px"
+          container.append(img); 
+        } else{
+          alert("Image upload failed. Please try again.");
+        }
+      }catch(error) {
+        console.log("Error uploading image", error);
+        alert("Error uploading Image")
+      }
+
+    })
+  </script>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "08session",
+  "version": "1.0.0",
+  "description": "1. Connet express app with db using mongoose\r 2. create routes for users \r 3. user details \r   - username\r   - age\r   - password\r 4. Create usersSchema\r 5. Perform CRUD operation with database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server":"nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "mongoose": "^8.9.3",
+    "nodemon": "^3.1.9"
+  }
+}
