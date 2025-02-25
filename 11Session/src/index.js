@@ -1,9 +1,9 @@
 
 const express = require("express");
 const { dbConnection } = require("./db");
-const dotenv = require("dotenv");
+require("dotenv").config();
 const { userRouter } = require("../routes/users.route");
-dotenv.config();
+
 const app = express()
 // don't forget to parse the request body
 app.use(express.json());

@@ -15,9 +15,9 @@ userRouter.post("/register", async (request, response) => {
         console.log(request.body, hash)
         const user = new UserModel({name, email, pass: hash, role});
         await user.save();
-        response.status(201).json({message:"Registration Successful!"})
+        return response.status(201).json({message:"Registration Successful!"})
       }else{
-        response.status(400).json({message:"something went wrong at time of hashing", err})
+        return response.status(400).json({message:"something went wrong at time of hashing", err})
       }
     
   });
@@ -35,7 +35,8 @@ userRouter.post("/login", async (request, response) => {
       if(result){
         const token = jwt.sign({userId:requireUser._id}, "cap01_046")
         request.currentUserId = requireUser?._id;
-        response.status(201).json({message:"Registration Successful!", token})
+        console.log(request.currentUserId, "line 38")
+        response.status(200).json({message:"Login Successful!", token})
       } else{
         response.status(400).json({message:"Invalid credential!", err})
       }
@@ -50,7 +51,11 @@ userRouter.post("/login", async (request, response) => {
 userRouter.get("/users", auth, authMiddleware(["admin"]), async (request, response) => {
   try {
     const users = await UserModel.find()
+    // token = request.headers.authorization.split(" ")[1]
+    // const decoded = jwt.verify(token, "cap01_046");
+    
     response.json({message:"get all the users",users})
+
   } catch (error) {
     response.json({message:"there is some issue!"})
   }
