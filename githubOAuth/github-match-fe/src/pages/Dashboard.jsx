@@ -6,6 +6,7 @@ const Dashboard = () => {
   const [token, setToken] = useState(null);
 
   useEffect(() => {
+    console.log("line 9 at dashboard",searchParams);
     const receivedToken = searchParams.get("token");
     if (receivedToken) {
       setToken(receivedToken);
